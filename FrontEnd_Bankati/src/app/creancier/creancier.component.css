@@ -1,0 +1,151 @@
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  font-size: 1.2em; /* Larger font */
+}
+
+/* Container styles */
+.container {
+  display: flex;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 320px; /* Increased width */
+  background-color: #343a40;
+  color: white;
+  padding: 25px; /* Increased padding */
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+}
+
+.test{
+  margin-top: 70px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 20px 0; /* Increased padding */
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar li i {
+  margin-right: 15px; /* Larger icons */
+  font-size: 1.2em;
+}
+
+/* Main content */
+.payment-container {
+  margin-left: 400px;
+  padding: 40px; /* Augmenté */
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 36px; /* Taille de police augmentée */
+  margin-bottom: 30px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 15px; /* Augmenté l'espace entre les onglets */
+  margin-bottom: 30px;
+}
+
+.tab {
+  padding: 15px 30px; /* Agrandi */
+  font-size: 20px; /* Police plus grande */
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #31b23d;
+  color: white;
+  font-size: 22px; /* Police plus grande */
+}
+
+/* Filter styles */
+.filter-container {
+  margin-bottom: 30px;
+}
+
+.filter-container select {
+  width: 100%;
+  padding: 15px; /* Agrandi */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 18px; /* Taille de police augmentée */
+}
+
+/* Creditor card styles */
+.creditor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Taille minimale des cartes augmentée */
+  gap: 30px; /* Augmenté l'espace entre les cartes */
+}
+
+.creditor-card {
+  background-color: white;
+  padding: 25px; /* Agrandi */
+  border: 1px solid #ddd;
+  border-radius: 15px; /* Bords arrondis plus visibles */
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Augmenté l'ombre pour un effet plus visible */
+}
+
+.creditor-card img {
+  max-width: 150px; /* Agrandi */
+  margin-bottom: 20px;
+}
+
+.creditor-card h3 {
+  font-size: 24px; /* Taille de police augmentée */
+  margin: 15px 0;
+  color: #333;
+}
+
+.creditor-card p {
+  font-size: 20px; /* Taille de police augmentée */
+  color: #666;
+}
+
+/* Buttons */
+button {
+  padding: 15px 30px; /* Taille des boutons agrandie */
+  font-size: 20px; /* Police augmentée */
+  background-color: #31b23d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Ajout d'une ombre pour un effet de surélévation */
+}
+
+button:hover {
+  background-color: #27b300;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet hover plus visible */
+}
