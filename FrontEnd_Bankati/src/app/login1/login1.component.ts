@@ -40,8 +40,8 @@ export class Login1Component {
   onLogin(): void {
     this.authService.login(this.credentials.email, this.credentials.password).subscribe(
       (response: AuthResponse) => {
-        console.log('Objet reçu de l\'authentification:', response); // Log de l'objet reçu
-
+        console.log('Objet reçu de l\'authentification:', response);// Log de l'objet reçu
+        const userId = response.userId;
         if (response) {
           const token = response.token;
 

@@ -19,5 +19,5 @@ export interface Agent {
   firstLogin: boolean;
   role: Roles;
   token?: string;
-
+  userId?:number;
 }
