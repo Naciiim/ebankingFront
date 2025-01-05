@@ -101,7 +101,7 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group">
-                      <label for="produit">Sélectionner un produit</label>
+                      <label for="produit">Sélectionner le type du compte</label>
                       <select id="produit" [(ngModel)]="formData.accountType" name="accountType" required>
                         <option value="" disabled selected>Choisissez un produit</option>
                         <option *ngFor="let accountType of accountTypes" [value]="accountType.type">{{ accountType.data.description }}</option>
@@ -141,7 +141,14 @@
                     <input type="file" id="cinVerso" (change)="onFileSelected($event, 'cinVerso')" required>
                   </div>
                   <div class="form-actions">
-                    <button type="submit" class="submit-btn" [disabled]="loading" (click)="onSubmit(form)">Enregistrer</button>
+                    <button type="submit" class="submit-btn" [disabled]="isLoading" (click)="onSubmit(form)">
+                      <ng-container *ngIf="!isLoading; else loading">
+                        Enregister
+                      </ng-container>
+                      <ng-template #loading>
+                        <div class="spinner"></div>
+                      </ng-template>
+                    </button>
                     <button type="button" class="cancel-btn" (click)="closeCreateClientModal()">Annuler</button>
                   </div>
                 </div>
@@ -204,7 +211,14 @@
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="submit-btn" [disabled]="loading" (click)="saveClient(editForm)">Mettre à jour</button>
+            <button type="submit" class="submit-btn" [disabled]="isLoading" (click)="saveClient(editForm)">
+              <ng-container *ngIf="!isLoading; else loading">
+                Mettre à jour
+              </ng-container>
+              <ng-template #loading>
+                <div class="spinner"></div>
+              </ng-template>
+            </button>
             <button type="button" class="cancel-btn" (click)="cancelEdit()">Annuler</button>
           </div>
         </div>

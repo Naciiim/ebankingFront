@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit{
     cinVerso: null as File | null
   };
 
-  loading = false;
+  isLoading = false;
   error = '';
   success = '';
   hasAccess = false;
@@ -103,7 +103,7 @@ export class AdminComponent implements OnInit{
 
   onSubmit(form: NgForm) {
     if (form.valid && this.formData.cinRecto && this.formData.cinVerso) {
-      this.loading = true;
+      this.isLoading = true;
       this.error = '';
       this.success = '';
       this.agentService.createAgent(
@@ -124,7 +124,7 @@ export class AdminComponent implements OnInit{
       ).subscribe({
         next: (response) => {
           this.success = 'agent créé avec succès';
-          this.loading = false;
+          this.isLoading = false;
           form.resetForm();
           this.closeCreateAgentModal();
           this.agents.push(response);
@@ -133,7 +133,7 @@ export class AdminComponent implements OnInit{
         },
         error: (error) => {
           this.error = error.error.message || 'Une erreur est survenue';
-          this.loading = false;
+          this.isLoading = false;
         }
       });
     }
@@ -145,20 +145,20 @@ export class AdminComponent implements OnInit{
   }
   saveAgent(form: NgForm): void {
     if (form.valid && this.selectedAgent) {
-      this.loading = true; // Indique que la sauvegarde est en cours
+      this.isLoading = true; // Indique que la sauvegarde est en cours
 
       // Appel du service pour sauvegarder les données de l'agent
       this.agentService.updateAgent(this.selectedAgent.id,this.selectedAgent).subscribe(
         (response) => {
           console.log('Agent mis à jour avec succès :', response);
-          this.loading = false;
+          this.isLoading = false;
           this.cancelEdit(); // Fermer le modal après sauvegarde
           this.cdRef.detectChanges();
           this.loadAgents();
         },
         (error) => {
           console.error('Erreur lors de la mise à jour de l\'agent :', error);
-          this.loading = false;
+          this.isLoading = false;
         }
       );
     }

@@ -162,7 +162,12 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="submit-btn" [disabled]="loading" (click)="onSubmit(form)">Enregistrer</button>
+      <button type="submit" class="submit-btn" [disabled]="isLoading" (click)="onSubmit(form)"> <ng-container *ngIf="!isLoading; else loading">
+        Enregister
+      </ng-container>
+        <ng-template #loading>
+          <div class="spinner"></div>
+        </ng-template></button>
       <button class="cancel-btn" (click)="closeCreateAgentModal()">Annuler</button>
     </div>
   </div>
@@ -252,8 +257,13 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="submit-btn" [disabled]="loading" (click)="saveAgent(editForm)">
-        Enregistrer
+      <button type="submit" class="submit-btn" [disabled]="isLoading" (click)="saveAgent(editForm)">
+        <ng-container *ngIf="!isLoading; else loading">
+          Enregister
+        </ng-container>
+        <ng-template #loading>
+          <div class="spinner"></div>
+        </ng-template>
       </button>
       <button class="cancel-btn" (click)="cancelEdit()">Annuler</button>
     </div>

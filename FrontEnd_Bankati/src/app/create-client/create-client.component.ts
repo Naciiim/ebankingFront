@@ -32,7 +32,7 @@ export class CreateClientComponent implements OnInit {
   };
   editingClient: Client | null = null;
   accountTypes: Array<{ type: AccountTypeEnum, data: AccountTypeData }> = [];
-  loading = false;
+  isLoading = false;
   error = '';
   success = '';
   hasAccess = false;
@@ -76,7 +76,7 @@ export class CreateClientComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid && this.formData.cinRecto && this.formData.cinVerso) {
-      this.loading = true;
+      this.isLoading = true;
       this.error = '';
       this.success = '';
 
@@ -96,7 +96,7 @@ export class CreateClientComponent implements OnInit {
       ).subscribe({
         next: (response) => {
           this.success = 'Client créé avec succès';
-          this.loading = false;
+          this.isLoading = false;
           form.resetForm();
           this.closeCreateClientModal();
           this.clients.push(response);
@@ -105,7 +105,7 @@ export class CreateClientComponent implements OnInit {
         },
         error: (error) => {
           this.error = error.error.message || 'Une erreur est survenue';
-          this.loading = false;
+          this.isLoading = false;
         }
       });
     }
@@ -131,18 +131,18 @@ export class CreateClientComponent implements OnInit {
 
   saveClient(form: NgForm): void {
     if (form.valid && this.selectedClient) {
-      this.loading = true; // Indique que la sauvegarde est en cours
+      this.isLoading = true; // Indique que la sauvegarde est en cours
       this.clientService.updateClient(this.selectedClient.id, this.selectedClient).subscribe(
         (response) => {
           console.log('Client mis à jour avec succès :', response);
-          this.loading = false;
+          this.isLoading = false;
           this.cancelEdit(); // Fermer le modal après sauvegarde
           this.cdRef.detectChanges();
           this.loadClients();  // Recharger la liste après la mise à jour
         },
         (error) => {
           console.error('Erreur lors de la mise à jour du client :', error);
-          this.loading = false;
+          this.isLoading = false;
         }
       );
     }
